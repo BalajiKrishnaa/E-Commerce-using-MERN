@@ -1,0 +1,29 @@
+.register_image--container{
+    background-image: url("https://www.iaspaper.net/wp-content/uploads/2017/10/How-to-Register-for-ACET-Exam.png");
+    height: 90vh;
+    background-size: cover;
+}
+.register_form--container{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.login_image--container{
+    background-image: url("https://thumbs.dreamstime.com/b/login-illustration-letter-cubes-forming-word-36025252.jpg");
+    height: 90vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.login_form--container{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+@media screen and (max-width:756px) {
+    .register_image--container,login_image--container{
+        display: none;
+    }
+}

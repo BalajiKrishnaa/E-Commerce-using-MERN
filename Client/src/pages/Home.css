@@ -1,0 +1,25 @@
+.category-tile{
+    height: 250px;
+    background-size: cover;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    transition: all 0.3s;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.home-banner{
+    width: 100%;
+    background-color: red;
+}
+.category-tile:hover{
+transform: scale(1.05);
+}
+
+.sale_banner--container img{
+    max-width: 1200px;
+    margin: 0 auto;
+}
