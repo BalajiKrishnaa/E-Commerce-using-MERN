@@ -23,3 +23,8 @@ transform: scale(1.05);
     max-width: 1200px;
     margin: 0 auto;
 }
+.card{
+    border: none;
+    width: 15rem !important;
+}
+

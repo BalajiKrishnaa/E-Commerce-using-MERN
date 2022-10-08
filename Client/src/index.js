@@ -5,6 +5,8 @@ import store from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import "react-alice-carousel/lib/alice-carousel.css";
+
 import persistStore from 'redux-persist/es/persistStore';
 import { PersistGate } from 'redux-persist/integration/react';
 import {BrowserRouter} from "react-router-dom"

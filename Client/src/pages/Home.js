@@ -1,19 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap'
 import './Home.css'
 import categories from '../Categories'
+import { useDispatch, useSelector } from 'react-redux'
+import axios from '../axios'
+import { updateProducts } from '../features/productSlice'
+import ProductReview from '../components/ProductReview'
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const products = useSelector(state=>state.products)
+console.log(products)
+  useEffect(()=>{
+   const res =  axios.get("/products").then(({data})=>dispatch(updateProducts(data)))
+   console.log(res);
+  },[])
   return (
     <div>
      <img src=" https://res.cloudinary.com/learn-code-10/image/upload/v1653947013/yqajnhqf7usk56zkwqi5.png" className="home-banner" />
     <div className="featured-products-container container mt-4">
         <h2>Last products</h2>
+        <div className='d-flex justify-content-center flex-wrap'>
+        {products.map(product=>(
+          <ProductReview {...product}></ProductReview>
+        ))}
+        </div>
         <div>
           <Link to="/category/all" style={{textAlign: "right", display: "block", textDecoration: "none" }}>{">>"} See more</Link>
-        </div>
+    </div>
     </div>
     <div className="sale_banner--container mt-4">
                 <img src="https://res.cloudinary.com/learn-code-10/image/upload/v1654093280/xkia6f13xxlk5xvvb5ed.png" />
@@ -23,7 +39,7 @@ const Home = () => {
                 <Row>
                   {categories.map(category=>(
                     <LinkContainer to={`/category/${category.name.toLocaleLowerCase()}`}>
-                      <Col md={4}>
+                      <Col md={4} >
                         <div style={{backgroundImage:`linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(${category.img})`,gap:"10px"}} 
                         className="category-tile"
                         >{category.name}</div>
