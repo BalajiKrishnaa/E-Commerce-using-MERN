@@ -14,6 +14,7 @@ const port = 5000;
 const User = require("./models/User")
 const userRoutes = require("./routes/UserRoutes")
 const productRoutes = require("./routes/ProductRoutes")
+const imageRoutes = require("./routes/ImageRoutes")
 
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
@@ -21,6 +22,7 @@ app.use(express.json())
 
 app.use("/users",userRoutes)
 app.use("/products",productRoutes)
+app.use("/images",imageRoutes)
 
 server.listen(port,()=>{
     console.log(`Server is connected at ${port}`);
