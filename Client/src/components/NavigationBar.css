@@ -2,3 +2,16 @@
     margin: 0 auto;
     display: block;
 }
+
+#cartcount{
+    background-color: red;
+    font-size: 10px;
+    color: aliceblue;
+    padding: 2px 4px;
+    vertical-align: top;
+}
+
+.badge{
+    padding-left: 9px;
+    padding-right: 9px;
+}

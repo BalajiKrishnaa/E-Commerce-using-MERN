@@ -14,8 +14,7 @@ const Home = () => {
   const products = useSelector(state=>state.products)
 console.log(products)
   useEffect(()=>{
-   const res =  axios.get("/products").then(({data})=>dispatch(updateProducts(data)))
-   console.log(res);
+   axios.get("/products").then(({data})=>dispatch(updateProducts(data)))
   },[])
   return (
     <div>

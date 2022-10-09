@@ -65,8 +65,7 @@ const NewProduct = () => {
               <Form.Select>
                 <option disabled defaultValue>--Select One--</option>
                 <option value="phones">Phones</option>
-                <option value="Tablets">Tablets</option>
-                <option value="Laptops">Laptops</option>
+                <option value="laptops">Laptops</option>
                 <option value="technology">Technology</option>
               </Form.Select>
             </Form.Group>

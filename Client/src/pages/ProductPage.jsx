@@ -8,18 +8,21 @@ import SimilarProduct from "../components/SimilarProduct";
 import './ProductPage.css'
 import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
+import { useAddToCartMutation } from "../services/appApi";
+import ToastMessage from "../components/ToastMessage";
 const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [similar, setSimilar] = useState(null);
   const user = useSelector(state=>state.user)
   const handleDragStart = (e) => e.preventDefault();
+  const [addToCart,{isSuccess}] = useAddToCartMutation();
   useEffect(()=>{
     axios.get(`/products/${id}`).then(({data})=>{
         setProduct(data.product);
         setSimilar(data.similar);
     })
-  },[])
+  },[id])
   if(!product){
     return <Loading />
   }
@@ -68,7 +71,8 @@ const ProductPage = () => {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </Form.Select>
-                <Button size="lg">Add to cart</Button>
+                <Button size="lg" onClick={()=>addToCart({userId:user?._id,productId:id,price:product.price,pictures:product.pictures[0].url})}>
+                  Add to cart</Button>
             </ButtonGroup>
          )}
          {user&&user.isAdmin&&(
@@ -76,9 +80,10 @@ const ProductPage = () => {
                 <Button size="lg">Edit Product</Button>
                 </LinkContainer>
          )}
+         {isSuccess&&<ToastMessage bg="info" title="Added to cart" msg={`${product.name} is added in your cart`}/>}
         </Col>
       </Row>
-      <div>
+      <div className="my-4">
         <h2>Similar Products</h2>
         <div className="d-flex justify-content-center align-items-center flex-wrap">
         <AliceCarousel

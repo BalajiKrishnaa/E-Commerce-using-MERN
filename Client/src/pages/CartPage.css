@@ -1,0 +1,9 @@
+.fa-minus-circle,
+.fa-plus-circle{
+    cursor: pointer;
+}
+
+.table-responsive-sm{
+    max-height: 70vh;
+    overflow: scroll;
+}
